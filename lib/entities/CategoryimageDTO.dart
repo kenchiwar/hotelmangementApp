@@ -15,13 +15,19 @@ class CategoryimageDTO {
 
   CategoryimageDTO.fromMap(Map<String, dynamic> map) {
       id = map["id"];
+      print("id");
       hotelDTOID = map["hotelDTOID"];
+      print("dtoid");
       name = map["name"];
+      print("dtoname");
       images = map["images"] != null
-          ? (map["images"] as List)
-          .map((image) => ImageDTO.fromMap(image))
-          .toList()
+          ? List<ImageDTO>.from(map["images"].map((x) => ImageDTO.fromMap(x)))
           : null;
+      // images = map["images"] != null
+      //     ? (map["images"] as List)
+      //     .map((image) => ImageDTO.fromMap(image))
+      //     .toList()
+      //     : null;
   }
 
   Map<String, dynamic> toMap() {

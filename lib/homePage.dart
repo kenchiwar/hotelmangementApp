@@ -1,4 +1,7 @@
-import 'package:hotelmanagement/models/hotelModel.dart';
+import 'package:hotelmanagement/ApiHelper/Category.dart';
+import 'package:hotelmanagement/entities/HotelDTO.dart';
+import 'package:hotelmanagement/entities/HotelDetailDTO.dart';
+
 import 'package:scroll_snap_list/scroll_snap_list.dart';
 import 'package:flutter/material.dart';
 import 'package:hotelmanagement/entities/hotel.dart';
@@ -12,6 +15,17 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+
+
+ Future<HotelDTO>? aaa ;
+
+   void getApiStudent (){
+     print("fffbbb");
+     CategoryAPI cdcs = new CategoryAPI();
+    cdcs.findAll();
+  }
+
+
   List<String> urls = [
     "https://image.tmdb.org/t/p/w370_and_h556_bestv2/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
     "https://image.tmdb.org/t/p/w370_and_h556_bestv2/lNkDYKmrVem1J0aAfCnQlJOCKn.jpgT",
@@ -33,11 +47,13 @@ class HomePageState extends State<HomePage> {
     Hotel(7, "hotel 4", 5.6, 7, "assets/images/white_lamp.jpg"),
   ];
 
-  // @override
-  // void initState() {
-  //   var hotelModel = HotelModel();
-  //   hotels = hotelModel.findAll();
-  // }
+ @override
+ void initState()  {
+   getApiStudent();
+
+
+
+ }
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +77,7 @@ class HomePageState extends State<HomePage> {
           // dynamicItemSize: true,
         ),
       ),
+
     );
   }
 

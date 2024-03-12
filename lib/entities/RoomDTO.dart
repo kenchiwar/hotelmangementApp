@@ -46,13 +46,14 @@ class RoomDTO {
     peopleMin = map['peopleMin'] as int? ?? 0;
     peopleMax = map['peopleMax'] as int? ?? 0;
     describes = map['describes'] as String?;
-    if (map["billDetails"] != null) {
-      billDetails = (map["billDetails"] as List<dynamic>)
-          .map((billDetailMap) => BillDetailDTO.fromMap(
-        billDetailMap as Map<String, dynamic>,
-      ))
-          .toSet();
-    }
+    print(peopleMax);
+    // if (map["billDetails"] != null) {
+    //   billDetails = (map["billDetails"] as List<dynamic>)
+    //       .map((billDetailMap) => BillDetailDTO.fromMap(
+    //     billDetailMap as Map<String, dynamic>,
+    //   ))
+    //       .toSet();
+    // }
   }
 
   Map<String, dynamic> toMap() {
@@ -69,7 +70,7 @@ class RoomDTO {
       'peopleMin': peopleMin,
       'peopleMax': peopleMax,
       'describes': describes,
-      'billDetails': billDetails.toList().map((bd) => bd.toMap()).toList(),
+    //  'billDetails': billDetails.toList().map((bd) => bd.toMap()).toList(),
     };
   }
 }

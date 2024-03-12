@@ -4,16 +4,19 @@ class ImageDTO {
   int? id;
   int? categoryimageDTOID;
   String? name;
-  DateTime? date;
 
-  ImageDTO({this.id, this.categoryimageDTOID, this.name, this.date});
+
+  ImageDTO({this.id, this.categoryimageDTOID, this.name});
 
   ImageDTO.fromMap(Map<String, dynamic> map) {
-    var dateFormat = DateFormat("yyyy-MM-dd");
+
     id = map["id"];
+    print("1");
     categoryimageDTOID = map["categoryimageDTOID"];
+    print("2");
     name = map["name"];
-    date = dateFormat.parse(map["date"]);
+    print("3");
+
   }
 
   Map<String, dynamic> toMap() {
@@ -22,7 +25,7 @@ class ImageDTO {
       "id": id ?? 0,
       "categoryimageDTOID": categoryimageDTOID,
       "name": name,
-      "date": dateFormat.format(date!),
+
     };
   }
 }

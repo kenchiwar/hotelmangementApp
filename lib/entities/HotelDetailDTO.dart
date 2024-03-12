@@ -1,10 +1,9 @@
 
-import 'package:hotelmanagement/entities/RoomDTO.dart';
 import 'package:intl/intl.dart';
 import 'package:hotelmanagement/entities/CategoryimageDTO.dart';
 
-class HotelDTO {
-  int? idHotelDTO;
+class HotelDetailDto {
+  int? idHotelDetailDto;
   int? accountDTOID;
   String? name;
   String? cancellationPolicy;
@@ -18,10 +17,12 @@ class HotelDTO {
   String? regulation;
   int? idHandler;
   String? address;
-  List<CategoryimageDTO>? categoryimages;
-  List<RoomDTO>?  rooms;
-  HotelDTO({
-    this.idHotelDTO,
+  int? haha;
+  int? totalrating;
+  //List<CategoryimageDTO>? categoryimages;
+
+  HotelDetailDto({
+    this.idHotelDetailDto,
     this.accountDTOID,
     this.name,
     this.cancellationPolicy,
@@ -35,12 +36,12 @@ class HotelDTO {
     this.regulation,
     this.idHandler,
     this.address,
-    this.categoryimages,
+    //this.categoryimages,
   });
 
-  HotelDTO.fromMap(Map<String, dynamic> map) {
+  HotelDetailDto.fromMap(Map<String, dynamic> map) {
     var dateFormat = DateFormat("yyyy-MM-dd"); // Assuming a date format for consistency
-    idHotelDTO = map["idHotelDTO"];
+    idHotelDetailDto = map["idHotelDetailDto"];
     accountDTOID = map["accountDTOID"];
     name = map["name"];
     cancellationPolicy = map["cancellationPolicy"];
@@ -54,18 +55,17 @@ class HotelDTO {
     regulation = map["regulation"];
     idHandler = map["idHandler"];
     address = map["address"];
-    categoryimages = map["categoryimages"] != null
-        ? List<CategoryimageDTO>.from(map["categoryimages"].map((x) => CategoryimageDTO.fromMap(x)))
-        : null;
-    rooms = map["rooms"] != null
-        ? List<RoomDTO>.from(map["rooms"].map((x) => RoomDTO.fromMap(x)))
-        : null;
+    haha=map["haha"];
+    totalrating = map["totalrating"];
+    //categoryimages = map["categoryimages"] != null
+      //  ? List<CategoryimageDTO>.from(map["categoryimages"].map((x) => CategoryimageDTO.fromMap(x)))
+        //: null;
   }
 
   Map<String, dynamic> toMap() {
     var dateFormat = DateFormat("yyyy-MM-dd");
     return <String, dynamic>{
-      "idHotelDTO": idHotelDTO ?? 0,
+      "idHotelDetailDto": idHotelDetailDto ?? 0,
       "accountDTOID": accountDTOID ?? 0,
       "name": name,
       "cancellationPolicy": cancellationPolicy,
@@ -79,9 +79,9 @@ class HotelDTO {
       "regulation": regulation,
       "idHandler": idHandler,
       "address": address,
-      "categoryimages": categoryimages != null
-          ? List<dynamic>.from(categoryimages!.map((x) => x.toMap()))
-          : null,
+      // "categoryimages": categoryimages != null
+      //     ? List<dynamic>.from(categoryimages!.map((x) => x.toMap()))
+      //     : null,
     };
   }
 }
