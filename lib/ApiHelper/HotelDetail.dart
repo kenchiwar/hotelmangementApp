@@ -8,22 +8,15 @@ class HotelDetail {
 
 
   String BASE_URL = UrlApi.BASE_URL;
-  Future<HotelDTO> findAll() async {
-    var response = await http.get(Uri.parse(BASE_URL));
-    print("fffffaaaaa");
+  Future<HotelDTO> find(int id) async {
+    var response = await http.get(Uri.parse(BASE_URL+'hoteldetail/$id'));
+
     if (response.statusCode == 200) {
-      print("fffff");
-      dynamic result = jsonDecode(response.body);
-      var aaaa=HotelDTO.fromMap(jsonDecode(response.body));
-      print("${aaaa.address}");
-      aaaa.categoryimages!.forEach((element) {
-        print("category:${element.name} ");
 
-      });
-      return     aaaa;
-
+      return HotelDTO.fromMap(jsonDecode(response.body));
     } else {
       throw Exception("Bad Request");
     }
   }
+
 }

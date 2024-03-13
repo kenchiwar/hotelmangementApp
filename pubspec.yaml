@@ -48,6 +48,9 @@ dev_dependencies:
   file_picker: ^6.1.1
   shared_preferences: ^2.2.2
   url_launcher: ^6.2.4
+  photo_gallery: ^2.1.1
+
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -61,6 +64,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+#  fonts
+  fonts:
+
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto-Bold.ttf
+          weight: 700
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
