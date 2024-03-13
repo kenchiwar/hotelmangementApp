@@ -17,6 +17,8 @@ class HotelDetailDto {
   String? regulation;
   int? idHandler;
   String? address;
+  double? price;
+  double? priceDiscount;
   int? haha;
   int? totalrating;
   //List<CategoryimageDTO>? categoryimages;
@@ -36,6 +38,10 @@ class HotelDetailDto {
     this.regulation,
     this.idHandler,
     this.address,
+    this.price,
+    this.priceDiscount,
+    this.haha,
+    this.totalrating
     //this.categoryimages,
   });
 
@@ -57,6 +63,11 @@ class HotelDetailDto {
     address = map["address"];
     haha=map["haha"];
     totalrating = map["totalrating"];
+    price=map["price"];
+    priceDiscount=map["priceDiscount"];
+
+
+
     //categoryimages = map["categoryimages"] != null
       //  ? List<CategoryimageDTO>.from(map["categoryimages"].map((x) => CategoryimageDTO.fromMap(x)))
         //: null;
