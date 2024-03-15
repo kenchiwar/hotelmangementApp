@@ -40,5 +40,7 @@ class CategoryimageDTO {
           : null,
     };
   }
+
+  map(Null Function(dynamic item) param0) {}
 }
 

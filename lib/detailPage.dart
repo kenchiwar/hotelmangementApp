@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:hotelmanagement/entities/hotel.dart';
 
 import 'ApiHelper/HotelDetail.dart';
+import 'categoryImagePage.dart';
+import 'descriptionPage.dart';
 
 class DetailPage extends StatefulWidget {
   @override
@@ -20,6 +22,9 @@ class HomePageState extends State<DetailPage> {
   Future<HotelDTO>? hotel;
   List<String> urlImages = [];
   var name;
+  var description;
+  var policy;
+  var categoryimageDTO;
   void getApiStudent() {
     HotelDetail hotelAPI = new HotelDetail();
     hotel = hotelAPI.find(3);
@@ -51,6 +56,10 @@ class HomePageState extends State<DetailPage> {
                 itemCount: 1,
                 itemBuilder: (context, i) {
                   int indexImage = 0;
+                  name=snapshot.data!.name!;
+                  description=snapshot.data!.description!;
+                  policy=snapshot.data!.cancellationPolicy!;
+                  categoryimageDTO = snapshot.data!.categoryimages!;
                   urlImages.clear();
                   print(snapshot.data!.address!);
                   snapshot.data!.categoryimages!.forEach((element) {
@@ -78,18 +87,20 @@ class HomePageState extends State<DetailPage> {
                         children: urlImages.map((item) {
                           indexImage++;
                           print(indexImage);
-
                           return Expanded(
                               flex: 2,
-                              child: Image.network(item,
-                                  height: 100,
-                                  width: 100,
-                                  alignment: Alignment.center,
-                                  fit: BoxFit.cover));
+                              child: GestureDetector(
+                                child: Image.network(item,
+                                    height: 100,
+                                    width: 100,
+                                    alignment: Alignment.center,
+                                    fit: BoxFit.cover),
+                                onTap: () => tapCategoryImage(),
+                              ));
                         }).toList(),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: EdgeInsets.only(bottom: 5),
                       ),
                       Container(
                         padding: EdgeInsets.all(10),
@@ -102,7 +113,7 @@ class HomePageState extends State<DetailPage> {
                             textAlign: TextAlign.left),
                       ),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: EdgeInsets.only(bottom: 5),
                       ),
                       Container(
                           padding: EdgeInsets.all(10),
@@ -115,15 +126,24 @@ class HomePageState extends State<DetailPage> {
                             ],
                           )),
                       Container(
-                        margin: EdgeInsets.only(bottom: 20),
+                        margin: EdgeInsets.only(bottom: 5),
                       ),
                       Container(
-                          padding: EdgeInsets.all(10),
+
                           child: ListTile(
                             title: Text("Descriptin Hotel",style: TextStyle(fontFamily: 'Roboto',fontSize: 20,fontWeight: FontWeight.w600)),
-                            subtitle: Text(snapshot.data!.description!,style: TextStyle(fontFamily: 'Roboto',fontSize: 18,)),
-                          ))
-                    ],
+                            subtitle: Text(snapshot.data!.description!,style: TextStyle(fontFamily: 'Roboto',fontSize: 15,),maxLines: 5, overflow: TextOverflow.ellipsis,),
+                          )),
+                      Container(
+                        padding: EdgeInsets.only(right: 10,left: 10),
+                        child: TextButton(
+                            child: Text("See more",style: TextStyle(color: Color(0xff0194f3),fontSize: 16,),textAlign: TextAlign.center,),
+                            onPressed: () => descriptionPage(),
+                        ),
+                      ),
+
+                      ],
+
                   ));
                 });
           } else {
@@ -134,5 +154,11 @@ class HomePageState extends State<DetailPage> {
         },
       ),
     );
+  }
+  void descriptionPage(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionPage(description: description,policy: policy,)));
+  }
+  void tapCategoryImage(){
+    Navigator.push(context, MaterialPageRoute(builder: (context) => CategoryImagePage(categoryimageDTO: categoryimageDTO)));
   }
 }
