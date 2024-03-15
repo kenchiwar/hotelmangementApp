@@ -38,7 +38,7 @@ class HomePageState extends State<DescriptionPage>  {
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
         backgroundColor: Colors.blue,
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         
       ),
       body: SingleChildScrollView(
@@ -46,12 +46,12 @@ class HomePageState extends State<DescriptionPage>  {
             children: [
                ListTile(
                     title: Text("Descriptin Hotel",style: TextStyle(fontFamily: 'Roboto',fontSize: 20,fontWeight: FontWeight.w600)),
-                  subtitle: Text(widget.description!,style: TextStyle(fontFamily: 'Roboto',fontSize: 15,),maxLines: 5, overflow: TextOverflow.ellipsis,),
+                  subtitle: Text(widget.description!,style: TextStyle(fontFamily: 'Roboto',fontSize: 15,), ),
                 ),
 
               ListTile(
                   title: Text("Policy Hotel",style: TextStyle(fontFamily: 'Roboto',fontSize: 20,fontWeight: FontWeight.w600)),
-                  subtitle: Text(widget.policy!,style: TextStyle(fontFamily: 'Roboto',fontSize: 15,),maxLines: 5, overflow: TextOverflow.ellipsis,),
+                  subtitle: Text(widget.policy!,style: TextStyle(fontFamily: 'Roboto',fontSize: 15,),),
                 ),
 
             ],

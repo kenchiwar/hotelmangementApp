@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hotelmanagement/ApiHelper/Category.dart';
 import 'package:hotelmanagement/entities/CategoryimageDTO.dart';
 import 'package:hotelmanagement/entities/HotelDTO.dart';
@@ -27,16 +28,21 @@ class HomePageState extends State<CategoryImagePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xff000000),
       appBar: AppBar(
         title: Text(
-          "Description And Policy",
+          "All Photos",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
-        backgroundColor: Colors.blue,
-        automaticallyImplyLeading: false,
+        backgroundColor: Color(0xff000000),
+        iconTheme: IconThemeData(
+          color: Colors.white, //change your color here
+        ),
+        automaticallyImplyLeading: true,
       ),
       body: SingleChildScrollView(
+
        child: Column(
          mainAxisSize: MainAxisSize.min,
          children: widget.categoryimageDTO!.map((e) {
@@ -48,27 +54,24 @@ class HomePageState extends State<CategoryImagePage> {
          });
          print(e.name);
          print(imagesCategory);
-         return SizedBox(
-             height: 100,
-             width: MediaQuery.of(context).size.width,
-             child: Column(
-             mainAxisSize: MainAxisSize.min,
-             verticalDirection: VerticalDirection.down,
+         return ListView(
+             shrinkWrap: true,
              children: [
-               Expanded(child: Text(e.name!)),
-               Expanded(
-                   child: Row(
+               Flexible(child: Text(e.name!,style: TextStyle(color: Colors.white,fontFamily: 'Roboto',fontSize: 20,fontWeight: FontWeight.w600),)),
+               Flexible(
+                   child: Wrap(
+                     spacing: 8.0, // gap between adjacent chips
+                     runSpacing: 4.0,
                      children: imagesCategory.map((i) {
-                       return Expanded(
-                         child: Image.network(i,
+                       return Image.network(i,
                              height: 100,
                              width: 100,
                              alignment: Alignment.center,
-                             fit: BoxFit.cover),
+                             fit: BoxFit.cover,
                        );
                      }).toList(),
                    ))
-             ]));
+             ]);
        }).toList(),),
       ),
     );
