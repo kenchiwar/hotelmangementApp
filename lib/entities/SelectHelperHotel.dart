@@ -2,21 +2,22 @@ import 'package:intl/intl.dart';
 
 class SelectHelperHotel {
   // Khai báo các thuộc tính riêng tư
-  final String city;
-  final String ward;
-  final String district;
-  final int priceMin;
-  final int priceMax;
-  final List<String> services;
+   String? city;
+
+   String? district;
+   String? ward;
+   int? priceMin;
+   int? priceMax;
+   List<String>? services;
 
   // Contructor
   SelectHelperHotel({
-    required this.city,
-    required this.ward,
-    required this.district,
-    required this.priceMin,
-    required this.priceMax,
-    required this.services,
+     this.city,
+     this.ward,
+     this.district,
+     this.priceMin,
+     this.priceMax,
+     this.services,
   });
 
   // Hàm tạo từ Map (fromJson)
