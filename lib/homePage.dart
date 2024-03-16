@@ -17,12 +17,11 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
 
 
- Future<HotelDTO>? aaa ;
+
 
    void getApiStudent (){
      print("fffbbb");
-     CategoryAPI cdcs = new CategoryAPI();
-    cdcs.findAll();
+
   }
 
 
@@ -49,7 +48,7 @@ class HomePageState extends State<HomePage> {
 
  @override
  void initState()  {
-   getApiStudent();
+
 
 
 
@@ -65,7 +64,7 @@ class HomePageState extends State<HomePage> {
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
         backgroundColor: Colors.blue,
-        automaticallyImplyLeading: false,
+       
       ),
       body: SizedBox(
         height: 250,

@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:hotelmanagement/entities/RoomDTO.dart';
 import 'package:intl/intl.dart';
 import 'package:hotelmanagement/entities/CategoryimageDTO.dart';
@@ -40,6 +42,7 @@ class HotelDTO {
 
   HotelDTO.fromMap(Map<String, dynamic> map) {
     var dateFormat = DateFormat("yyyy-MM-dd"); // Assuming a date format for consistency
+    
     idHotelDTO = map["idHotelDTO"];
     accountDTOID = map["accountDTOID"];
     name = map["name"];

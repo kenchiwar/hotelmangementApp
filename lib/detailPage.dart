@@ -11,8 +11,11 @@ import 'package:hotelmanagement/entities/hotel.dart';
 import 'ApiHelper/HotelDetail.dart';
 import 'categoryImagePage.dart';
 import 'descriptionPage.dart';
+import 'homePage.dart';
 
 class DetailPage extends StatefulWidget {
+  var id;
+  DetailPage({required this.id});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -30,7 +33,7 @@ class HomePageState extends State<DetailPage> {
   var Rooms;
   void getApiStudent() {
     HotelDetail hotelAPI = new HotelDetail();
-    hotel = hotelAPI.find(3);
+    hotel = hotelAPI.find(widget.id);
   }
 
   @override
@@ -274,6 +277,35 @@ class HomePageState extends State<DetailPage> {
           }
         },
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                floatingActionButtonOnPressHomePage();
+              },
+              child: Icon(Icons.home),
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                // Handle the tap event here
+                // Add your desired functionality
+              },
+              child: Column(
+                children: [
+                  Icon(Icons.explore, ),
+
+
+                ],
+              ),
+            ),
+            label: '',
+          ),
+        ],
+      ),
     );
   }
 
@@ -301,5 +333,12 @@ class HomePageState extends State<DetailPage> {
           return Text("False");
         });
   }
-
+  void floatingActionButtonOnPressHomePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => HomePage(),  //tên function cần chuyển vậy thôi
+      ),
+    );
+  }
 }
