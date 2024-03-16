@@ -1,12 +1,20 @@
 import 'package:hotelmanagement/ApiHelper/Category.dart';
-import 'package:hotelmanagement/entities/HotelDTO.dart';
-import 'package:hotelmanagement/entities/HotelDetailDTO.dart';
+import 'package:hotelmanagement/ApiHelper/IndexHotelApi.dart';
 
-import 'package:scroll_snap_list/scroll_snap_list.dart';
+import 'package:hotelmanagement/entities/HotelDetailDTO.dart';
+import 'package:hotelmanagement/util/emoticon_faces.dart';
+
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:hotelmanagement/entities/hotel.dart';
 
+import 'detailPage.dart';
+import 'models/SearchHotelPage.dart';
+
 class HomePage extends StatefulWidget {
+
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -16,113 +24,334 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
 
-
-
-
-   void getApiStudent (){
-     print("fffbbb");
-
-  }
-
-
-  List<String> urls = [
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/lNkDYKmrVem1J0aAfCnQlJOCKn.jpgT",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/wrFpXMNBRj2PBiN4Z5kix51XaIZ.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/r6pPUVUKU5eIpYj4oEzidk5ZibB.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/x1txcDXkcM65gl7w20PwYSxAYah.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/ptSrT1JwZFWGhjSpYUtJaasQrh.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/wMq9kQXTeQCHUZOG4fAe5cAxyUA.jpg",
-    "https://image.tmdb.org/t/p/w370_and_h556_bestv2/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-  ];
-
-  List<Hotel> hotels = [
-    Hotel(1, "hotel 1", 5.6, 3, "assets/images/black_chair.jpg"),
-    Hotel(2, "hotel 2", 5.6, 3, "assets/images/blue_sofa.jpg"),
-    Hotel(3, "hotel 3", 5.6, 3, "assets/images/copper_lamp.jpg"),
-    Hotel(4, "hotel 4", 5.6, 3, "assets/images/orange_lamp.jpg"),
-    Hotel(5, "hotel 5", 5.6, 3, "assets/images/pink_chair.jpg"),
-    Hotel(6, "hotel 6", 5.6, 3, "assets/images/white_chair.jpg"),
-    Hotel(7, "hotel 4", 5.6, 7, "assets/images/white_lamp.jpg"),
-  ];
+Future<List<HotelDetailDto>>? hotelsDTO;
+var dateFormat = DateFormat("dd/MM/yyyy");
 
  @override
  void initState()  {
 
-
-
-
+  var hotelAPI = IndexHotelApi();
+  hotelsDTO = hotelAPI.findAll();
  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Test Snap list scroll",
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
-        ),
-        backgroundColor: Colors.blue,
-       
-      ),
-      body: SizedBox(
-        height: 250,
-        child: ScrollSnapList(
-          itemBuilder: _buildListItem,
-          itemCount: hotels.length,
-          itemSize: 150,
-          onItemFocus: (index) {},
-          // dynamicItemSize: true,
-        ),
-      ),
+      backgroundColor: Colors.blue[800],
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
 
+              },
+              child: Column(
+                children: [
+                  Icon(Icons.home,color:Colors.blue ),
+                  SizedBox(height: 4),
+                  Divider(color: Colors.blue, height: 0), // Added Divider
+                ],
+              ),
+            ),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: GestureDetector(
+              onTap: () {
+                floatingActionButtonOnPressSearchPage();
+                // Handle the tap event here
+                // Add your desired functionality
+              },
+              child: Column(
+                children: [
+                  Icon(Icons.explore, ),
+
+                ],
+              ),
+            ),
+            label: '',
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
+         crossAxisAlignment: CrossAxisAlignment.start,
+         children: [
+           Padding(
+             padding: const EdgeInsets.symmetric(horizontal: 25.0),
+             child: Column(
+               children: [
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Text(
+                       "Hi Bro",
+                       style: TextStyle(
+                         color: Colors.white,
+                         fontSize: 24,
+                         fontWeight: FontWeight.bold,
+                       ),
+                     ),
+                     SizedBox(
+                       height: 8,
+                     ),
+                     Text(
+                       "23 Jan, 2021",
+                       style: TextStyle(
+                           color: Colors.blue[200]
+                       ),
+                     ),
+                     Container(
+                       decoration: BoxDecoration(
+                         color: Colors.blue[600],
+                         borderRadius: BorderRadius.circular(12),
+                       ),
+                       padding: EdgeInsets.all(12),
+                       child: Icon(
+                         Icons.notifications,
+                         color: Colors.white,
+                       ),
+                     ),
+                   ],
+                 ),
+
+                 SizedBox(
+                   height: 25,
+                 ),
+
+                 //search
+
+
+                 SizedBox(
+                   height: 25,
+                 ),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Text(
+                       "How do you feel?",
+                       style: TextStyle(
+                         color: Colors.white,
+                         fontSize: 18,
+                         fontWeight: FontWeight.bold,
+                       ),
+                     ),
+                     Icon(Icons.more_horiz, color: Colors.white,)
+                   ],
+                 ),
+
+                 SizedBox(
+                   height: 25,
+                 ),
+
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   children: [
+                     Column(
+                       children: [
+                         EmoticonFace(emoticonFace: '😞'),
+                         SizedBox(height: 8,),
+                         Text("Bad", style: TextStyle(color: Colors.white),),
+                       ],
+                     ),
+                     Column(
+                       children: [
+                         EmoticonFace(emoticonFace: '🙂'),
+                         SizedBox(height: 8,),
+                         Text("Fine", style: TextStyle(color: Colors.white),),
+                       ],
+                     ),
+                     Column(
+                       children: [
+                         EmoticonFace(emoticonFace: '🤗'),
+                         SizedBox(height: 8,),
+                         Text("Well", style: TextStyle(color: Colors.white),),
+                       ],
+                     ),
+                     Column(
+                       children: [
+                         EmoticonFace(emoticonFace: '😘'),
+                         SizedBox(height: 8,),
+                         Text("Excellent", style: TextStyle(color: Colors.white),),
+                       ],
+                     ),
+                   ],
+                 ),
+               ],
+             ),
+           ),
+          SizedBox(height: 25,),
+
+          Expanded(
+           child: Container(
+             padding: EdgeInsets.all(25),
+             color: Colors.grey[200],
+             child: Center(
+               child: FutureBuilder(
+                 future: hotelsDTO,
+                 builder: (BuildContext context, AsyncSnapshot<
+                     List<HotelDetailDto>> snapshot) {
+                   if (snapshot.hasData) {
+                     return ListView.separated(
+                       scrollDirection: Axis.horizontal,
+                       itemCount: snapshot.data!.length,
+                       separatorBuilder: (context, _) => SizedBox(width: 20,),
+                       itemBuilder: (context, i){
+                          return Container(
+
+                            width: 220,
+                            // height: 200,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(12),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.3),
+                                  spreadRadius: 2,
+                                  blurRadius: 7,
+                                  offset: Offset(0, 3), // Điều chỉnh vị trí của đường bóng
+                                ),
+                              ],
+                              border: Border.all(
+                                color: Colors.grey[200]!, // Màu viền
+                                width: 1, // Độ dày của viền
+                              ),
+                            ),
+                            child: GestureDetector(
+                              onTap: () => hotel_detail(snapshot.data![i].idAccount!),
+                              child: ClipRRect(
+                                borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                child: Column(
+                                  children: [
+                                    Image.network(
+                                      snapshot.data![i].mainPhoto!,
+                                      fit: BoxFit.cover,
+                                      width: 230,
+                                      height: 260,
+                                    ),
+
+                                    Align(
+                                      alignment: Alignment.bottomCenter,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children:[
+                                            Text(
+                                              '${snapshot.data![i].name}',
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              style: TextStyle(
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Wrap(
+                                              children: [
+                                                Row(
+                                                  children: [
+                                                    Text(
+                                                      '${snapshot.data![i].haha}/5 ',
+                                                      style: TextStyle(
+                                                          fontWeight: FontWeight.bold,
+                                                          fontSize: 16,
+                                                          color: Colors.blueAccent
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      '(${snapshot.data![i].totalrating})',
+                                                      style: TextStyle(
+                                                        fontSize: 16,
+
+                                                      ),
+                                                    )
+                                                  ],
+                                                )
+                                              ],
+                                            ),
+                                            Wrap(
+                                              spacing: 3.0,
+                                              children: List.generate(snapshot.data!.length, (i) {
+                                                return Row(
+                                                  mainAxisSize: MainAxisSize.min,
+                                                  children: [
+                                                    Icon(Icons.star, color: Colors.yellow),
+                                                  ],
+                                                );
+                                              },
+                                              ),
+                                            ),
+                                            Wrap(
+                                              spacing: 10.0,
+                                              children: [
+                                                Text(
+                                                  "${snapshot.data![i].price!.toInt()} VND",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                      decoration: TextDecoration.lineThrough,
+                                                      fontSize: 18
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Wrap(
+                                              spacing: 10.0,
+                                              children: [
+
+                                                Text("${snapshot.data![i].priceDiscount!.toInt()} VND",
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 2,
+                                                  style: TextStyle(
+                                                      color: Colors.red,
+                                                      fontSize: 20
+                                                  ),
+                                                ),
+
+                                              ],
+                                            ),
+
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+
+                          );
+                       }
+                     );
+                   } else {
+                     return Center(
+                       child: CircularProgressIndicator(),);
+                   }
+                 },
+               ),
+             ),
+           )
+          )
+        ],
+              ),
+      ),
     );
   }
 
-  Widget _buildListItem(BuildContext context, int index) {
-    Hotel hotel = hotels[index];
-    return SizedBox(
-      width: 200,
-      height: 300,
-      child: Card(
-        elevation: 12,
-        child: ClipRRect(
-          borderRadius: const BorderRadius.all(Radius.circular(10)),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Image.asset(
-                  hotel.photo,
-                  fit: BoxFit.cover,
-                  width: 190,
-                  height: 120,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  hotel.name,
-                  style: const TextStyle(
-                      fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '\$${hotel.price}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            '${hotel.star} Reviews',
-                            style: const TextStyle(color: Colors.blue),
-                          )
-                        ]))
-              ]),
-        ),
+  void hotel_detail(int id){
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailPage(id : id),  //tên function cần chuyển vậy thôi
       ),
     );
   }
+void floatingActionButtonOnPressSearchPage() {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => SeachHotelPage(),  //tên function cần chuyển vậy thôi
+    ),
+  );
+}
 }

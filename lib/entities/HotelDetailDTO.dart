@@ -5,6 +5,8 @@ import 'package:hotelmanagement/entities/CategoryimageDTO.dart';
 class HotelDetailDto {
   int? idHotelDetailDto;
   int? accountDTOID;
+  int? idAccount;
+
   String? name;
   String? cancellationPolicy;
   String? description;
@@ -26,6 +28,7 @@ class HotelDetailDto {
   HotelDetailDto({
     this.idHotelDetailDto,
     this.accountDTOID,
+    this.idAccount,
     this.name,
     this.cancellationPolicy,
     this.description,
@@ -49,6 +52,7 @@ class HotelDetailDto {
     var dateFormat = DateFormat("yyyy-MM-dd"); // Assuming a date format for consistency
     idHotelDetailDto = map["idHotelDetailDto"];
     accountDTOID = map["accountDTOID"];
+    idAccount = map["idAccount"];
     name = map["name"];
     cancellationPolicy = map["cancellationPolicy"];
     description = map["description"];
@@ -77,7 +81,8 @@ class HotelDetailDto {
     var dateFormat = DateFormat("yyyy-MM-dd");
     return <String, dynamic>{
       "idHotelDetailDto": idHotelDetailDto ?? 0,
-      "accountDTOID": accountDTOID ?? 0,
+      // "accountDTOID": accountDTOID ?? 0,
+      "idAccount" : idAccount ?? 0,
       "name": name,
       "cancellationPolicy": cancellationPolicy,
       "description": description,

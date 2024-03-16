@@ -12,6 +12,7 @@ import 'ApiHelper/HotelDetail.dart';
 import 'categoryImagePage.dart';
 import 'descriptionPage.dart';
 import 'homePage.dart';
+import 'models/SearchHotelPage.dart';
 
 class DetailPage extends StatefulWidget {
   var id;
@@ -291,6 +292,7 @@ class HomePageState extends State<DetailPage> {
           BottomNavigationBarItem(
             icon: GestureDetector(
               onTap: () {
+                floatingActionButtonOnPressSearchPage();
                 // Handle the tap event here
                 // Add your desired functionality
               },
@@ -341,4 +343,15 @@ class HomePageState extends State<DetailPage> {
       ),
     );
   }
+  void floatingActionButtonOnPressSearchPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => SeachHotelPage(),  //tên function cần chuyển vậy thôi
+      ),
+    );
+  }
+
+
+
 }

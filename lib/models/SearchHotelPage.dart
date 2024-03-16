@@ -7,6 +7,8 @@ import 'package:hotelmanagement/entities/SelectHelperHotel.dart';
 import 'package:hotelmanagement/entities/Ward.dart';
 import 'package:hotelmanagement/homePage.dart';
 
+import '../detailPage.dart';
+
 class SeachHotelPage extends StatefulWidget{
   @override
   State<StatefulWidget> createState() {
@@ -96,113 +98,115 @@ class SearchHotelPageState extends State<SeachHotelPage> {
                   childAspectRatio: 0.58,
                   // Tỉ lệ giữa chiều rộng và chiều cao của card
                   children : snapshot.data!.map((data1) {
-                    return Card(
-                      color: Colors.white,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                      child: Column(
-                        children: <Widget>[
-                          Expanded(child: Image.network(
-                            '${data1.mainPhoto}',
+                    return GestureDetector(
+                      onTap: () {
 
-                            width: double.infinity,
-                            fit: BoxFit.cover,
-                          ),),
+                        hotel_detail(data1!.idAccount!);
+                      },
+                      child:   Card(
 
-                          Divider(),
-                          Align(
-                            alignment: Alignment.bottomCenter,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: <Widget>[
-                                Text(
-                                  '${data1.name}',
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                        elevation: 4,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        child: Column(
+                          children: <Widget>[
+                            Expanded(child: Image.network(
+                              '${data1.mainPhoto}',
 
+                              width: double.infinity,
+                              fit: BoxFit.cover,
+                            ),),
 
-
-                                  ),
-                                ),
-                                Text("${data1.address}",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    color: Colors.black38,
+                            Divider(),
+                            Align(
+                              alignment: Alignment.bottomCenter,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    '${data1.name}',
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
 
 
 
-                                  ),
-                                ),
-                                Text("${data1.description}",
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                ),
-                                Wrap(
-                                  spacing: 3.0,
-                                  children: <Widget>[
-                                    Icon(Icons.star, color: Colors.yellow),
-                                    Text('${data1.haha}/5'),
-                                    Text('(${data1.totalrating})')
-                                  ],
-                                ),
-                                Wrap(
-                                  spacing: 10.0,
-                                  children: <Widget>[
-                                    // Container(
-                                    //   decoration: BoxDecoration(
-                                    //     color: Colors.pink,
-                                    //
-                                    //     borderRadius: BorderRadius.circular(10),
-                                    //   ),
-                                    //   child:Padding(
-                                    //     padding: EdgeInsets.all(3),
-                                    //     child :  Text(
-                                    //       'Your Text',
-                                    //       style: TextStyle
-                                    //         (fontSize: 12,color: Colors.lightGreenAccent),
-                                    //     ),
-                                    //   ),
-                                    // ),
-                                    Text("${data1.priceDiscount} VND",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
                                     ),
-                                    Text(
-                                      "${data1.price} VND",
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                        color: Colors.red,
-                                        decoration: TextDecoration.lineThrough,
+                                  ),
+                                  Text("${data1.address}",
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black38,
+
+
+
+                                    ),
+                                  ),
+                                  Text("${data1.description}",
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 2,
+                                  ),
+                                  Wrap(
+                                    spacing: 3.0,
+                                    children: <Widget>[
+                                      Icon(Icons.star, color: Colors.yellow),
+                                      Text('${data1.haha}/5'),
+                                      Text('(${data1.totalrating})')
+                                    ],
+                                  ),
+                                  Wrap(
+                                    spacing: 10.0,
+                                    children: <Widget>[
+                                      // Container(
+                                      //   decoration: BoxDecoration(
+                                      //     color: Colors.pink,
+                                      //
+                                      //     borderRadius: BorderRadius.circular(10),
+                                      //   ),
+                                      //   child:Padding(
+                                      //     padding: EdgeInsets.all(3),
+                                      //     child :  Text(
+                                      //       'Your Text',
+                                      //       style: TextStyle
+                                      //         (fontSize: 12,color: Colors.lightGreenAccent),
+                                      //     ),
+                                      //   ),
+                                      // ),
+                                      Text("${data1.priceDiscount} VND",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
                                       ),
-                                    ),
-                                  ],
-                                ),
-
-                                Align(
-                                  alignment: Alignment.topRight,
-
-                                  child: ElevatedButton(onPressed: () {},
-
-                                    child: Text('Button')
-                                    ,
+                                      Text(
+                                        "${data1.price} VND",
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 2,
+                                        style: TextStyle(
+                                          color: Colors.red,
+                                          decoration: TextDecoration.lineThrough,
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                ),
 
 
-                              ],
+
+
+                                ],
+                              ),
                             ),
-                          ),
 
 
-                        ],
+                          ],
+                        ),
                       ),
                     )
+
+
+
                     ;
                   }).toList(),
 
@@ -476,6 +480,14 @@ class SearchHotelPageState extends State<SeachHotelPage> {
       context,
       MaterialPageRoute(
         builder: (context) => HomePage(),  //tên function cần chuyển vậy thôi
+      ),
+    );
+  }
+  void hotel_detail(int id){
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailPage(id : id),  //tên function cần chuyển vậy thôi
       ),
     );
   }

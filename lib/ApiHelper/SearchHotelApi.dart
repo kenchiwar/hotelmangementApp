@@ -13,7 +13,7 @@ class SearchHotelApi {
 
 
   Future<List<HotelDetailDto>> findAll() async {
-    var response = await http.get(Uri.parse(BASE_URL+"api/search/demo2"));
+    var response = await http.get(Uri.parse(BASE_URL+"search/demo2"));
 
     if (response.statusCode == 200) {
 
@@ -48,7 +48,7 @@ class SearchHotelApi {
   Future<List<HotelDetailDto>> findSelectHelperHotel(SelectHelperHotel selectHelper) async {
 
    var response = await http.post(
-       Uri.parse(BASE_URL+"api/search/search"),
+       Uri.parse(BASE_URL+"search/search"),
       body: json.encode(selectHelper.toMap()),
       headers: {
         "Content-Type": "application/json",
