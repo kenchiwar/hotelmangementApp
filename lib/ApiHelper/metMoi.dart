@@ -45,12 +45,13 @@ class aa extends State<ddddd> {
               children: List.generate(8, (index) {
 
                 return Card(
+                  color: Colors.white,
                   elevation: 4,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: <Widget>[
-                      Expanded(child: Image.asset(
-                        'assets/images/black_chair.jpg',
+                      Expanded(child: Image.network(
+                        '${data1.mainPhoto}',
 
                         width: double.infinity,
                         fit: BoxFit.cover,
@@ -63,7 +64,7 @@ class aa extends State<ddddd> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              'Livotel Hotel Kaset Nawamin Bangkok fsfsfasfdafasfasfafaf',
+                              '${data1.name}',
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: TextStyle(
@@ -74,10 +75,18 @@ class aa extends State<ddddd> {
 
                               ),
                             ),
-                            Text('Address '
-                                'sdfsdfasdfsfsfds'
-                                'sdfsdfsdfdsffsf'
-                                'sdfdsfdsfsf',
+                            Text("${data1.address}",
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.black38,
+
+
+
+                              ),
+                            ),
+                            Text("${data1.description}",
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                             ),
@@ -85,19 +94,34 @@ class aa extends State<ddddd> {
                               spacing: 3.0,
                               children: <Widget>[
                                 Icon(Icons.star, color: Colors.yellow),
-                                Text('8.5/10'),
-                                Text('(4123456789)')
+                                Text('${data1.haha}/5'),
+                                Text('(${data1.totalrating})')
                               ],
                             ),
                             Wrap(
                               spacing: 10.0,
                               children: <Widget>[
-                                Text('10000000.00 VND',
+                                // Container(
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.pink,
+                                //
+                                //     borderRadius: BorderRadius.circular(10),
+                                //   ),
+                                //   child:Padding(
+                                //     padding: EdgeInsets.all(3),
+                                //     child :  Text(
+                                //       'Your Text',
+                                //       style: TextStyle
+                                //         (fontSize: 12,color: Colors.lightGreenAccent),
+                                //     ),
+                                //   ),
+                                // ),
+                                Text("${data1.priceDiscount} VND",
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                 ),
                                 Text(
-                                  '541.635 VND',
+                                  "${data1.price} VND",
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                   style: TextStyle(
@@ -127,6 +151,7 @@ class aa extends State<ddddd> {
                     ],
                   ),
                 );
+
               }),
 
             ),
