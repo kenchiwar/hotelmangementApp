@@ -222,7 +222,7 @@ class HomePageState extends State<DetailPage> {
                                                 ),
                                                 Flexible(
                                                   child: Text(
-                                                      "\$${snapshot.data!.rooms![i].price!}",
+                                                      "\₫ ${snapshot.data!.rooms![i].price!}",
                                                     style: TextStyle(decoration: TextDecoration.lineThrough,fontWeight: FontWeight.w500,fontSize: 16)),
                                                 ),
                                                 Container(
@@ -230,7 +230,7 @@ class HomePageState extends State<DetailPage> {
                                                 ),
                                                 Flexible(
                                                   child: Text(
-                                                      "\$${snapshot.data!.rooms![i].priceDiscount!}",
+                                                      "\₫${snapshot.data!.rooms![i].priceDiscount!}",
                                                       style: TextStyle(fontWeight: FontWeight.w700,fontSize: 20,color: Color(0xffff5e1f)),),
                                                 ),
                                                 Container(
