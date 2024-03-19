@@ -198,7 +198,6 @@ var dateFormat = DateFormat("dd/MM/yyyy");
                        separatorBuilder: (context, _) => SizedBox(width: 20,),
                        itemBuilder: (context, i){
                           return Container(
-
                             width: 220,
                             // height: 200,
                             decoration: BoxDecoration(
@@ -262,7 +261,6 @@ var dateFormat = DateFormat("dd/MM/yyyy");
                                                       '(${snapshot.data![i].totalrating})',
                                                       style: TextStyle(
                                                         fontSize: 16,
-
                                                       ),
                                                     )
                                                   ],
@@ -271,7 +269,7 @@ var dateFormat = DateFormat("dd/MM/yyyy");
                                             ),
                                             Wrap(
                                               spacing: 3.0,
-                                              children: List.generate(snapshot.data!.length, (i) {
+                                              children: List.generate(snapshot.data![i].rating!, (i) {
                                                 return Row(
                                                   mainAxisSize: MainAxisSize.min,
                                                   children: [

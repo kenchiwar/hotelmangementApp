@@ -49,7 +49,7 @@ class HomePageState extends State<DetailPage> {
 
       appBar: AppBar(
         title: Text(
-          "$name",
+          "Detail",
           style: TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 30),
         ),
@@ -191,7 +191,7 @@ class HomePageState extends State<DetailPage> {
                                 itemCount: snapshot.data!.rooms!.length,
                                 itemBuilder: (context, i) {
                                   return SizedBox(
-                                      height: 220,
+                                      height: 260,
 
                                       child: Card(
 
@@ -206,7 +206,7 @@ class HomePageState extends State<DetailPage> {
                                               children: [
                                                 Expanded(
                                                   child: Text(
-                                                    "Room : ${snapshot.data!.rooms![i].name!}",
+                                                    " ${snapshot.data!.rooms![i].name!}",
                                                     style: TextStyle(
                                                       fontSize: 24,
                                                       color: Color(0xff0194f3),
@@ -214,6 +214,15 @@ class HomePageState extends State<DetailPage> {
                                                           FontWeight.w700,
                                                     ),
                                                   ),
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                    "${snapshot.data!.rooms![i].describes!}",style: TextStyle(
+                                                    fontSize: 16,
+                                                    color: Color(0xff000000),
+                                                    fontWeight:
+                                                    FontWeight.w700,
+                                                  ),),
                                                 ),
                                                 Expanded(
                                                   child: Text(
